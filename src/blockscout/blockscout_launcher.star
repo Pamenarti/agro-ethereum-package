@@ -1,6 +1,6 @@
 shared_utils = import_module("../shared_utils/shared_utils.star")
 constants = import_module("../package_io/constants.star")
-postgres = import_module("github.com/Pamenarti/postgres-package/main.star")
+postgres = import_module("github.com/kurtosis-tech/postgres-package/main.star")
 
 POSTGRES_IMAGE = "library/postgres:alpine"
 
