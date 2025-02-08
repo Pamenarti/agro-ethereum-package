@@ -34,7 +34,7 @@ Optional features (enabled via flags or parameter files at runtime):
 3. Run the package with default configurations from the command line:
 
    ```bash
-   kurtosis run --enclave my-testnet github.com/ethpandaops/ethereum-package
+   kurtosis run --enclave my-testnet github.com/Pamenarti/agro-ethereum-package
    ```
 
 #### Run with your own configuration
@@ -42,7 +42,7 @@ Optional features (enabled via flags or parameter files at runtime):
 Kurtosis packages are parameterizable, meaning you can customize your network and its behavior to suit your needs by storing parameters in a file that you can pass in at runtime like so:
 
 ```bash
-kurtosis run --enclave my-testnet github.com/ethpandaops/ethereum-package --args-file network_params.yaml
+kurtosis run --enclave my-testnet github.com/Pamenarti/agro-ethereum-package --args-file network_params.yaml
 ```
 
 Where `network_params.yaml` contains the parameters for your network in your home directory.
