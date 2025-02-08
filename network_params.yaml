@@ -67,17 +67,15 @@ participants:
     builder_network_params: null
     keymanager_enabled: false
 network_params:
-  network: kurtosis
-  network_id: "3151908"
+  network: AgroTestnet
+  network_id: "3442"
   deposit_contract_address: "0x4242424242424242424242424242424242424242"
   seconds_per_slot: 12
   num_validator_keys_per_node: 64
   preregistered_validator_keys_mnemonic:
-    "giant issue aisle success illegal bike spike
-    question tent bar rely arctic volcano long crawl hungry vocal artwork sniff fantasy
-    very lucky have athlete"
+    "twenty tired cactus cinnamon rent clean curve lecture broken road sniff twenty"
   preregistered_validator_count: 0
-  genesis_delay: 20
+  genesis_delay: 50
   genesis_gaslimit: 30000000
   max_per_epoch_activation_churn_limit: 8
   churn_limit_quotient: 65536
@@ -88,7 +86,7 @@ network_params:
   deneb_fork_epoch: 0
   electra_fork_epoch: 100000000
   fulu_fork_epoch: 100000001
-  network_sync_base_url: https://snapshots.ethpandaops.io/
+  network_sync_base_url: http://localhost/
   data_column_sidecar_subnet_count: 128
   samples_per_slot: 8
   custody_requirement: 4
@@ -109,8 +107,8 @@ spamoor_blob_params:
 prometheus_params:
   storage_tsdb_retention_time: "1d"
   storage_tsdb_retention_size: "512MB"
-  min_cpu: 10
-  max_cpu: 1000
+  min_cpu: 5
+  max_cpu: 10
   min_mem: 128
   max_mem: 2048
 grafana_params:
@@ -137,10 +135,10 @@ disable_peer_scoring: false
 persistent: false
 mev_type: null
 mev_params:
-  mev_relay_image: ethpandaops/mev-boost-relay:main
-  mev_builder_image: ethpandaops/flashbots-builder:main
+  mev_relay_image: agrotestnet/mev-boost-relay:main
+  mev_builder_image: agrotestnet/flashbots-builder:main
   mev_builder_cl_image: sigp/lighthouse:latest
-  mev_boost_image: ethpandaops/mev-boost:develop
+  mev_boost_image: agrotestnet/mev-boost:develop
   mev_boost_args: ["mev-boost", "--relay-check"]
   mev_relay_api_extra_args: []
   mev_relay_housekeeper_extra_args: []
@@ -156,7 +154,7 @@ mev_params:
     interval_between_transactions: 1
 xatu_sentry_enabled: false
 xatu_sentry_params:
-  xatu_sentry_image: ethpandaops/xatu-sentry
+  xatu_sentry_image: agrotestnet/xatu-sentry
   xatu_server_addr: localhost:8000
   xatu_server_tls: false
   xatu_server_headers: {}
