@@ -167,6 +167,14 @@ xatu_sentry_params:
     - voluntary_exit
     - contribution_and_proof
     - blob_sidecar
+    - blockscout
+    - prometheus
+    - blobber
+    - blobscan
+    - blob_spammer
+    - grafana
+    - static_files
+    - beacon_metrics_gazer
 apache_port: 40000
 global_tolerations: []
 global_node_selectors: {}

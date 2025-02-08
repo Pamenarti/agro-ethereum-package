@@ -1,10 +1,10 @@
 shared_utils = import_module("../shared_utils/shared_utils.star")
 constants = import_module("../package_io/constants.star")
-postgres = import_module("github.com/kurtosis-tech/postgres-package/main.star")
+postgres = import_module("github.com/Pamenarti/postgres-package/main.star")
 
 POSTGRES_IMAGE = "library/postgres:alpine"
 
-SERVICE_NAME_BLOCKSCOUT = "blockscout"
+SERVICE_NAME_BLOCKSCOUT = "Agro Global Coin Testnet"
 SERVICE_NAME_FRONTEND = "blockscout-frontend"
 HTTP_PORT_NUMBER = 4000
 HTTP_PORT_NUMBER_VERIF = 8050
@@ -233,7 +233,7 @@ def get_config_frontend(
         env_vars={
             "NEXT_PUBLIC_API_PROTOCOL": "http",
             "NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL": "ws",
-            "NEXT_PUBLIC_NETWORK_NAME": "Kurtosis",
+            "NEXT_PUBLIC_NETWORK_NAME": "Agro Global Coin Testnet",
             "NEXT_PUBLIC_NETWORK_ID": network_params.network_id,
             "NEXT_PUBLIC_NETWORK_RPC_URL": el_client_rpc_url,
             "NEXT_PUBLIC_APP_HOST": "0.0.0.0",

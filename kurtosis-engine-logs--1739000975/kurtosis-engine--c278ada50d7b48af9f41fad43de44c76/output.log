@@ -1,0 +1,509 @@
+[37mDEBU[0m[2025-02-08T07:14:04Z][backend_creator.go:getLocalDockerKurtosisBackend] Connecting to Docker daemon via unix socket '/var/run/docker.sock' 
+[36mINFO[0m[2025-02-08T07:14:04Z][main.go:getLogsDatabaseClient] Setting log retention period to '1' week(s). 
+[37mDEBU[0m[2025-02-08T07:14:04Z][log_file_manager.go:func2] Scheduling log file path creation every '1m0s' minutes... 
+[37mDEBU[0m[2025-02-08T07:14:04Z][log_file_manager.go:func1] Scheduling log removal for log retention every '6h0m0s' hours... 
+[37mDEBU[0m[2025-02-08T07:14:04Z][main.go:func1] Created environment js file with content: 
+window.env = {}; 
+[36mINFO[0m[2025-02-08T07:14:04Z][main.go:restApiServer] Running REST API server...                   
+[36mINFO[0m[2025-02-08T07:14:05Z][main.go:restApiServer] Setting-up CORS policy to accept requests from origins: [*] 
+[36mINFO[0m[2025-02-08T07:14:04Z][server.go:RunEnclaveManagerApiServer] Web server running and listening on port 8081 
+[37mDEBU[0m[2025-02-08T07:14:05Z][log_file_manager.go:RemoveLogsBeyondRetentionPeriod] Successfully removed the following logs beyond retention period at the following path: '[]' 
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.3
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:9779
+[37mDEBU[0m[2025-02-08T07:14:05Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:14:05Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave 'f17b7a85a2ba4237be5d2448f18d4b5a'... 
+[37mDEBU[0m[2025-02-08T07:14:05Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' created successfully with ID '7042694d1771af0ad75255b10a025dee75e6bd27253a10c981efdf312df68bff' 
+[37mDEBU[0m[2025-02-08T07:14:05Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:14:05Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' 
+[37mDEBU[0m[2025-02-08T07:14:05Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:14:05Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--f17b7a85a2ba4237be5d2448f18d4b5a:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:14:05Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'cce9d9f404185e344ee544d3f307e70ebac3dde0531984b6ff7a48ff80baa0ff' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:14:05Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:14:05Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[36mINFO[0m[2025-02-08T07:14:05Z][docker_manager.go:pullImage] Pulling image 'fluent/fluent-bit:1.9.7'      
+[37mDEBU[0m[2025-02-08T07:14:10Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--f17b7a85a2ba4237be5d2448f18d4b5a:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:14:11Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'db2c014b5fe3f0db0a84184e110ec6b552e40b78aed388b371f08507bcc11470' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:14:11Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave 'f17b7a85a2ba4237be5d2448f18d4b5a'... 
+[37mDEBU[0m[2025-02-08T07:14:11Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' 
+[37mDEBU[0m[2025-02-08T07:14:11Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID 'db2c014b5fe3f0db0a84184e110ec6b552e40b78aed388b371f08507bcc11470' for enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' 
+[37mDEBU[0m[2025-02-08T07:14:11Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:14:11Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' 
+[37mDEBU[0m[2025-02-08T07:14:11Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[7042694d1771af0ad75255b10a025dee75e6bd27253a10c981efdf312df68bff:172.16.0.2]' 
+[36mINFO[0m[2025-02-08T07:14:11Z][docker_manager.go:pullImage] Pulling image 'kurtosistech/core:1.4.4'      
+[37mDEBU[0m[2025-02-08T07:14:16Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:14:16Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock f17b7a85a2ba4237be5d2448f18d4b5a:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:14:18Z][docker_manager.go:CreateAndStartContainer] Created container with ID '502be32c40f7adf6f6742fa628feae51da605283485170a5825a3f1911b60b0e' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:14:18Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave 'f17b7a85a2ba4237be5d2448f18d4b5a'... 
+[37mDEBU[0m[2025-02-08T07:14:18Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' 
+[37mDEBU[0m[2025-02-08T07:14:18Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave 'f17b7a85a2ba4237be5d2448f18d4b5a' successfully created 
+[37mDEBU[0m[2025-02-08T07:15:35Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:15:35Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:15:35Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:15:35Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:17:43Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[502be32c40f7adf6f6742fa628feae51da605283485170a5825a3f1911b60b0e:true db2c014b5fe3f0db0a84184e110ec6b552e40b78aed388b371f08507bcc11470:true] 
+[37mDEBU[0m[2025-02-08T07:17:43Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[f17b7a85a2ba4237be5d2448f18d4b5a:true kurtosis-logs-collector-vol--f17b7a85a2ba4237be5d2448f18d4b5a:true] 
+[37mDEBU[0m[2025-02-08T07:17:43Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[7042694d1771af0ad75255b10a025dee75e6bd27253a10c981efdf312df68bff:true] 
+[37mDEBU[0m[2025-02-08T07:17:43Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[7042694d1771af0ad75255b10a025dee75e6bd27253a10c981efdf312df68bff:true] 
+[37mDEBU[0m[2025-02-08T07:20:00Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave 'cc76c0dbb3cc44ce81331db4239f60ae'... 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave 'cc76c0dbb3cc44ce81331db4239f60ae' created successfully with ID '74722ad29ac2676696bf7f20ab0d542179ae8ab0b6ecc5038ee9645c96195259' 
+[37mDEBU[0m[2025-02-08T07:20:00Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:20:00Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave 'cc76c0dbb3cc44ce81331db4239f60ae' 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--cc76c0dbb3cc44ce81331db4239f60ae:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'a9798ce9332bea65110d6c69459c2cc98e124b4cccf9d3a321ef97288927f812' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:20:00Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--cc76c0dbb3cc44ce81331db4239f60ae:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:20:00Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'f3b24df6e9ff8bc8550f0b63befdaf41decb02c3aff02dd1315e20bf69d38946' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave 'cc76c0dbb3cc44ce81331db4239f60ae'... 
+[37mDEBU[0m[2025-02-08T07:20:01Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave 'cc76c0dbb3cc44ce81331db4239f60ae' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID 'f3b24df6e9ff8bc8550f0b63befdaf41decb02c3aff02dd1315e20bf69d38946' for enclave 'cc76c0dbb3cc44ce81331db4239f60ae' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave 'cc76c0dbb3cc44ce81331db4239f60ae' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[74722ad29ac2676696bf7f20ab0d542179ae8ab0b6ecc5038ee9645c96195259:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock cc76c0dbb3cc44ce81331db4239f60ae:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_manager.go:CreateAndStartContainer] Created container with ID '09c79348c51007ac061d7e2c3c861e94368787b5f1edaacd97953c1564bd29fe' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave 'cc76c0dbb3cc44ce81331db4239f60ae'... 
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave 'cc76c0dbb3cc44ce81331db4239f60ae' 
+[37mDEBU[0m[2025-02-08T07:20:01Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave 'cc76c0dbb3cc44ce81331db4239f60ae' successfully created 
+[37mDEBU[0m[2025-02-08T07:21:06Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[09c79348c51007ac061d7e2c3c861e94368787b5f1edaacd97953c1564bd29fe:true f3b24df6e9ff8bc8550f0b63befdaf41decb02c3aff02dd1315e20bf69d38946:true] 
+[37mDEBU[0m[2025-02-08T07:21:06Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[cc76c0dbb3cc44ce81331db4239f60ae:true kurtosis-logs-collector-vol--cc76c0dbb3cc44ce81331db4239f60ae:true] 
+[37mDEBU[0m[2025-02-08T07:21:06Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[74722ad29ac2676696bf7f20ab0d542179ae8ab0b6ecc5038ee9645c96195259:true] 
+[37mDEBU[0m[2025-02-08T07:21:07Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[74722ad29ac2676696bf7f20ab0d542179ae8ab0b6ecc5038ee9645c96195259:true] 
+[37mDEBU[0m[2025-02-08T07:21:11Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:21:11Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave '7485a3ea7eb24068acc85327546d4a6f'... 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave '7485a3ea7eb24068acc85327546d4a6f' created successfully with ID '18639ac50e4617c3d155eacc5669f47a701ff8240876d99e6f804aa9b5450bcd' 
+[37mDEBU[0m[2025-02-08T07:21:12Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:21:12Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave '7485a3ea7eb24068acc85327546d4a6f' 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--7485a3ea7eb24068acc85327546d4a6f:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'ae66a8c00a37f9029796c657276cee721cf661d5b665ed7dba0465eda23722e1' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:21:12Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--7485a3ea7eb24068acc85327546d4a6f:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:21:12Z][docker_manager.go:CreateAndStartContainer] Created container with ID '55ce380221c0e06a8595f5ce3922e1a45e8b1a95874759c5ff0e0299662cd696' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave '7485a3ea7eb24068acc85327546d4a6f'... 
+[37mDEBU[0m[2025-02-08T07:21:13Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave '7485a3ea7eb24068acc85327546d4a6f' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID '55ce380221c0e06a8595f5ce3922e1a45e8b1a95874759c5ff0e0299662cd696' for enclave '7485a3ea7eb24068acc85327546d4a6f' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave '7485a3ea7eb24068acc85327546d4a6f' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[18639ac50e4617c3d155eacc5669f47a701ff8240876d99e6f804aa9b5450bcd:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock 7485a3ea7eb24068acc85327546d4a6f:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_manager.go:CreateAndStartContainer] Created container with ID '0f4b5416fe1c7443be06a90b184425b6da9cbcbf86027d010056829b941a0fe7' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave '7485a3ea7eb24068acc85327546d4a6f'... 
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave '7485a3ea7eb24068acc85327546d4a6f' 
+[37mDEBU[0m[2025-02-08T07:21:13Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave '7485a3ea7eb24068acc85327546d4a6f' successfully created 
+[37mDEBU[0m[2025-02-08T07:23:10Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[0f4b5416fe1c7443be06a90b184425b6da9cbcbf86027d010056829b941a0fe7:true 55ce380221c0e06a8595f5ce3922e1a45e8b1a95874759c5ff0e0299662cd696:true] 
+[37mDEBU[0m[2025-02-08T07:23:10Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[7485a3ea7eb24068acc85327546d4a6f:true kurtosis-logs-collector-vol--7485a3ea7eb24068acc85327546d4a6f:true] 
+[37mDEBU[0m[2025-02-08T07:23:10Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[18639ac50e4617c3d155eacc5669f47a701ff8240876d99e6f804aa9b5450bcd:true] 
+[37mDEBU[0m[2025-02-08T07:23:11Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[18639ac50e4617c3d155eacc5669f47a701ff8240876d99e6f804aa9b5450bcd:true] 
+[37mDEBU[0m[2025-02-08T07:23:12Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:23:12Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave '46061ce1b9e24b09b5f8026c97814e90'... 
+[37mDEBU[0m[2025-02-08T07:23:12Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave '46061ce1b9e24b09b5f8026c97814e90' created successfully with ID '611023089f4b6ca654a9b8774c5926fd02d15bf6cc4067b023f7ad5986463ebd' 
+[37mDEBU[0m[2025-02-08T07:23:12Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:23:13Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave '46061ce1b9e24b09b5f8026c97814e90' 
+[37mDEBU[0m[2025-02-08T07:23:13Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:23:13Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--46061ce1b9e24b09b5f8026c97814e90:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:23:13Z][docker_manager.go:CreateAndStartContainer] Created container with ID '141c92dc40d1afa9b4b6719662ac0f037ae1464ab327addf21181dc85ce27c69' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:23:13Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:23:13Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:23:13Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--46061ce1b9e24b09b5f8026c97814e90:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:23:13Z][docker_manager.go:CreateAndStartContainer] Created container with ID '2a9df29618976e57184025d95efb5ffa9062c7fa7c86855b25f42ec7e4eaa5eb' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:23:14Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave '46061ce1b9e24b09b5f8026c97814e90'... 
+[37mDEBU[0m[2025-02-08T07:23:14Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave '46061ce1b9e24b09b5f8026c97814e90' 
+[37mDEBU[0m[2025-02-08T07:23:14Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID '2a9df29618976e57184025d95efb5ffa9062c7fa7c86855b25f42ec7e4eaa5eb' for enclave '46061ce1b9e24b09b5f8026c97814e90' 
+[37mDEBU[0m[2025-02-08T07:23:14Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:23:14Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave '46061ce1b9e24b09b5f8026c97814e90' 
+[37mDEBU[0m[2025-02-08T07:23:14Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[611023089f4b6ca654a9b8774c5926fd02d15bf6cc4067b023f7ad5986463ebd:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:23:14Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:23:14Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock 46061ce1b9e24b09b5f8026c97814e90:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:23:14Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'f1da5df50e10d3f6d297257e44b363272e169150c797a77358e68a36e088db71' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:23:14Z][shared_helpers.go:WaitForPortAvailabilityUsingNetstat] Netstat availability-waiting command '[ -n "$(netstat -anp tcp | grep LISTEN | grep 7443)" ]' returned without a Docker error, but exited with non-0 exit code '1' and logs: 
+[37mDEBU[0m[2025-02-08T07:23:15Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave '46061ce1b9e24b09b5f8026c97814e90'... 
+[37mDEBU[0m[2025-02-08T07:23:15Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave '46061ce1b9e24b09b5f8026c97814e90' 
+[37mDEBU[0m[2025-02-08T07:23:15Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave '46061ce1b9e24b09b5f8026c97814e90' successfully created 
+[37mDEBU[0m[2025-02-08T07:23:56Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[2a9df29618976e57184025d95efb5ffa9062c7fa7c86855b25f42ec7e4eaa5eb:true f1da5df50e10d3f6d297257e44b363272e169150c797a77358e68a36e088db71:true] 
+[37mDEBU[0m[2025-02-08T07:23:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[46061ce1b9e24b09b5f8026c97814e90:true kurtosis-logs-collector-vol--46061ce1b9e24b09b5f8026c97814e90:true] 
+[37mDEBU[0m[2025-02-08T07:23:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[611023089f4b6ca654a9b8774c5926fd02d15bf6cc4067b023f7ad5986463ebd:true] 
+[37mDEBU[0m[2025-02-08T07:23:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[611023089f4b6ca654a9b8774c5926fd02d15bf6cc4067b023f7ad5986463ebd:true] 
+[37mDEBU[0m[2025-02-08T07:23:59Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave '3092146246f64d8e8e6deae05db55641'... 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave '3092146246f64d8e8e6deae05db55641' created successfully with ID '98aa4059ade6841ab1e62aeec146e6e04013d629bfb359fe6cca262ae6e9e477' 
+[37mDEBU[0m[2025-02-08T07:23:59Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:23:59Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave '3092146246f64d8e8e6deae05db55641' 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--3092146246f64d8e8e6deae05db55641:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'c82f46e1b4abcd3531619b4ff46a96b04bd8117ae772beb809241cb90877f588' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:23:59Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--3092146246f64d8e8e6deae05db55641:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:23:59Z][docker_manager.go:CreateAndStartContainer] Created container with ID '9889a069f3a2c43552afd0d625b6aaf23a9c39f58db550ce512124c4b12de647' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave '3092146246f64d8e8e6deae05db55641'... 
+[37mDEBU[0m[2025-02-08T07:24:00Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave '3092146246f64d8e8e6deae05db55641' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID '9889a069f3a2c43552afd0d625b6aaf23a9c39f58db550ce512124c4b12de647' for enclave '3092146246f64d8e8e6deae05db55641' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave '3092146246f64d8e8e6deae05db55641' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[98aa4059ade6841ab1e62aeec146e6e04013d629bfb359fe6cca262ae6e9e477:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock kurtosis-docker-config-storage:/root/.docker/ 3092146246f64d8e8e6deae05db55641:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/] 
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'da4f2362ad89293ec2ec7fff40187e6ad17fcf52f4fa485558097800f270eb00' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave '3092146246f64d8e8e6deae05db55641'... 
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave '3092146246f64d8e8e6deae05db55641' 
+[37mDEBU[0m[2025-02-08T07:24:00Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave '3092146246f64d8e8e6deae05db55641' successfully created 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:81fa7210-27f7-45f2-8a67-3bb6cabf0b63 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:14:05.062465208 +0000 UTC m=+0.078835692 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:0accad38-8d53-41c1-b241-56b32109120e AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:17:43.183867049 +0000 UTC m=+218.200237655 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:21a21d75-822a-433c-80a6-7cd9b9175d7f AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:20:00.103649702 +0000 UTC m=+355.120020288 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:caaa9026-ca3f-4746-af35-8fa184f25ec3 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:21:06.398924593 +0000 UTC m=+421.415295200 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:845dc622-4deb-48f6-a8d6-623e889888f3 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:21:11.958933405 +0000 UTC m=+426.975304013 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:cfd6c6f2-6db4-4ef9-8369-ec3d7fbe23d6 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:23:10.403288157 +0000 UTC m=+545.419658632 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:0c3cf158-19ac-426a-820c-83197c0d2bd0 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:23:12.883429813 +0000 UTC m=+547.899800420 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:d9156c67-76e7-428d-82ef-d4db7ef5aeeb AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:23:56.780132694 +0000 UTC m=+591.796503202 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:24:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:18b1514c-a4b1-4d86-81cc-c66d74f72e4b AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:23:59.002707184 +0000 UTC m=+594.019077794 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:26:51Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[9889a069f3a2c43552afd0d625b6aaf23a9c39f58db550ce512124c4b12de647:true da4f2362ad89293ec2ec7fff40187e6ad17fcf52f4fa485558097800f270eb00:true] 
+[37mDEBU[0m[2025-02-08T07:26:52Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[3092146246f64d8e8e6deae05db55641:true kurtosis-logs-collector-vol--3092146246f64d8e8e6deae05db55641:true] 
+[37mDEBU[0m[2025-02-08T07:26:52Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[98aa4059ade6841ab1e62aeec146e6e04013d629bfb359fe6cca262ae6e9e477:true] 
+[37mDEBU[0m[2025-02-08T07:26:52Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[98aa4059ade6841ab1e62aeec146e6e04013d629bfb359fe6cca262ae6e9e477:true] 
+[37mDEBU[0m[2025-02-08T07:26:53Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:26:53Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave 'aa055e62c1174f1d917a3664e0e604fe'... 
+[37mDEBU[0m[2025-02-08T07:26:53Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave 'aa055e62c1174f1d917a3664e0e604fe' created successfully with ID '5826bb6c3d650e62a4194a8e2d7a8aef9cdc56a753f199567fc325ef72ac7b92' 
+[37mDEBU[0m[2025-02-08T07:26:53Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:26:53Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave 'aa055e62c1174f1d917a3664e0e604fe' 
+[37mDEBU[0m[2025-02-08T07:26:53Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:26:53Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--aa055e62c1174f1d917a3664e0e604fe:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:26:53Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'f7cd44fefcd9a97c94381d9df5159e171de58ca96919341d3a83a65353cf709a' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:26:54Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:26:54Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:26:54Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--aa055e62c1174f1d917a3664e0e604fe:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:26:54Z][docker_manager.go:CreateAndStartContainer] Created container with ID '7033addec2f95698c4802ff3ae70ea133463bcf8923dd5424be8acabe2e6378d' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:26:54Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave 'aa055e62c1174f1d917a3664e0e604fe'... 
+[37mDEBU[0m[2025-02-08T07:26:54Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave 'aa055e62c1174f1d917a3664e0e604fe' 
+[37mDEBU[0m[2025-02-08T07:26:54Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID '7033addec2f95698c4802ff3ae70ea133463bcf8923dd5424be8acabe2e6378d' for enclave 'aa055e62c1174f1d917a3664e0e604fe' 
+[37mDEBU[0m[2025-02-08T07:26:54Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:26:54Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave 'aa055e62c1174f1d917a3664e0e604fe' 
+[37mDEBU[0m[2025-02-08T07:26:55Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[5826bb6c3d650e62a4194a8e2d7a8aef9cdc56a753f199567fc325ef72ac7b92:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:26:55Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:26:55Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock aa055e62c1174f1d917a3664e0e604fe:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:26:55Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'c10aebe8e8812787e9638498a527d7854b5a1e46669154998d2b2f7b2c02cb2f' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:26:55Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave 'aa055e62c1174f1d917a3664e0e604fe'... 
+[37mDEBU[0m[2025-02-08T07:26:55Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave 'aa055e62c1174f1d917a3664e0e604fe' 
+[37mDEBU[0m[2025-02-08T07:26:55Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave 'aa055e62c1174f1d917a3664e0e604fe' successfully created 
+[37mDEBU[0m[2025-02-08T07:27:18Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[7033addec2f95698c4802ff3ae70ea133463bcf8923dd5424be8acabe2e6378d:true c10aebe8e8812787e9638498a527d7854b5a1e46669154998d2b2f7b2c02cb2f:true] 
+[37mDEBU[0m[2025-02-08T07:27:19Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[aa055e62c1174f1d917a3664e0e604fe:true kurtosis-logs-collector-vol--aa055e62c1174f1d917a3664e0e604fe:true] 
+[37mDEBU[0m[2025-02-08T07:27:19Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[5826bb6c3d650e62a4194a8e2d7a8aef9cdc56a753f199567fc325ef72ac7b92:true] 
+[37mDEBU[0m[2025-02-08T07:27:19Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[5826bb6c3d650e62a4194a8e2d7a8aef9cdc56a753f199567fc325ef72ac7b92:true] 
+[37mDEBU[0m[2025-02-08T07:27:21Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave 'a3882c0707b44a13a5b2364fa0d9b642'... 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave 'a3882c0707b44a13a5b2364fa0d9b642' created successfully with ID '645cc9bae8288f363a56bc783ca490f599f6d7750bbaf42c6c49f581d68fe986' 
+[37mDEBU[0m[2025-02-08T07:27:21Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:27:21Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave 'a3882c0707b44a13a5b2364fa0d9b642' 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--a3882c0707b44a13a5b2364fa0d9b642:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'bf840549e37ca060435286d26e921412b0c70279fd42e0922be74c876dda3175' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:27:21Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--a3882c0707b44a13a5b2364fa0d9b642:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:27:21Z][docker_manager.go:CreateAndStartContainer] Created container with ID '0fa90a0b267aeaccf02fd6ba6c7a646d1883cdf7b15ae5bba02f74ae5090cebf' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave 'a3882c0707b44a13a5b2364fa0d9b642'... 
+[37mDEBU[0m[2025-02-08T07:27:22Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave 'a3882c0707b44a13a5b2364fa0d9b642' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID '0fa90a0b267aeaccf02fd6ba6c7a646d1883cdf7b15ae5bba02f74ae5090cebf' for enclave 'a3882c0707b44a13a5b2364fa0d9b642' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave 'a3882c0707b44a13a5b2364fa0d9b642' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[645cc9bae8288f363a56bc783ca490f599f6d7750bbaf42c6c49f581d68fe986:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock a3882c0707b44a13a5b2364fa0d9b642:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'a66f2f3810405944f887d627f0371963ab67a651ff7444e814971a0588f68c69' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave 'a3882c0707b44a13a5b2364fa0d9b642'... 
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave 'a3882c0707b44a13a5b2364fa0d9b642' 
+[37mDEBU[0m[2025-02-08T07:27:22Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave 'a3882c0707b44a13a5b2364fa0d9b642' successfully created 
+[37mDEBU[0m[2025-02-08T07:28:01Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[0fa90a0b267aeaccf02fd6ba6c7a646d1883cdf7b15ae5bba02f74ae5090cebf:true a66f2f3810405944f887d627f0371963ab67a651ff7444e814971a0588f68c69:true] 
+[37mDEBU[0m[2025-02-08T07:28:01Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[a3882c0707b44a13a5b2364fa0d9b642:true kurtosis-logs-collector-vol--a3882c0707b44a13a5b2364fa0d9b642:true] 
+[37mDEBU[0m[2025-02-08T07:28:01Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[645cc9bae8288f363a56bc783ca490f599f6d7750bbaf42c6c49f581d68fe986:true] 
+[37mDEBU[0m[2025-02-08T07:28:01Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[645cc9bae8288f363a56bc783ca490f599f6d7750bbaf42c6c49f581d68fe986:true] 
+[37mDEBU[0m[2025-02-08T07:28:03Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:28:03Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave 'c334bc5034634298aa234a8fc3562068'... 
+[37mDEBU[0m[2025-02-08T07:28:03Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave 'c334bc5034634298aa234a8fc3562068' created successfully with ID '28cb1a38e76cd1273a09b09a655cd47d78e1b23e9d70a418855d970967c53175' 
+[37mDEBU[0m[2025-02-08T07:28:03Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:28:03Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave 'c334bc5034634298aa234a8fc3562068' 
+[37mDEBU[0m[2025-02-08T07:28:03Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:28:03Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--c334bc5034634298aa234a8fc3562068:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:28:03Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'b8272fd4968ca4325548d7ac46dcb02f42fd0afa99a9fe021797c18a717a38aa' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:28:03Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--c334bc5034634298aa234a8fc3562068:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_manager.go:CreateAndStartContainer] Created container with ID '4eac96f7b28d13d60f749a397cc30bb7bd89cadac00d1e2deafc5aa49186268a' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:28:04Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave 'c334bc5034634298aa234a8fc3562068'... 
+[37mDEBU[0m[2025-02-08T07:28:04Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave 'c334bc5034634298aa234a8fc3562068' 
+[37mDEBU[0m[2025-02-08T07:28:04Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID '4eac96f7b28d13d60f749a397cc30bb7bd89cadac00d1e2deafc5aa49186268a' for enclave 'c334bc5034634298aa234a8fc3562068' 
+[37mDEBU[0m[2025-02-08T07:28:04Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave 'c334bc5034634298aa234a8fc3562068' 
+[37mDEBU[0m[2025-02-08T07:28:04Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[28cb1a38e76cd1273a09b09a655cd47d78e1b23e9d70a418855d970967c53175:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock c334bc5034634298aa234a8fc3562068:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:28:04Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'b2f48617022ba15cd1c3016ce4effc7e5b992ccd75430cb0ef293d9dd2452652' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:28:05Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave 'c334bc5034634298aa234a8fc3562068'... 
+[37mDEBU[0m[2025-02-08T07:28:05Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave 'c334bc5034634298aa234a8fc3562068' 
+[37mDEBU[0m[2025-02-08T07:28:05Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave 'c334bc5034634298aa234a8fc3562068' successfully created 
+[37mDEBU[0m[2025-02-08T07:28:09Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[4eac96f7b28d13d60f749a397cc30bb7bd89cadac00d1e2deafc5aa49186268a:true b2f48617022ba15cd1c3016ce4effc7e5b992ccd75430cb0ef293d9dd2452652:true] 
+[37mDEBU[0m[2025-02-08T07:28:09Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[c334bc5034634298aa234a8fc3562068:true kurtosis-logs-collector-vol--c334bc5034634298aa234a8fc3562068:true] 
+[37mDEBU[0m[2025-02-08T07:28:09Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[28cb1a38e76cd1273a09b09a655cd47d78e1b23e9d70a418855d970967c53175:true] 
+[37mDEBU[0m[2025-02-08T07:28:09Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[28cb1a38e76cd1273a09b09a655cd47d78e1b23e9d70a418855d970967c53175:true] 
+[37mDEBU[0m[2025-02-08T07:29:37Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:37Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:37Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:37Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:50Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:29:50Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave '42a0246510704036a9bfcbc31b3f6865'... 
+[37mDEBU[0m[2025-02-08T07:29:50Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave '42a0246510704036a9bfcbc31b3f6865' created successfully with ID '668e126f5763ca3e05fa1c29579c7e7afa48de60615cba62c8d13b7e5a84829b' 
+[37mDEBU[0m[2025-02-08T07:29:50Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:29:50Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave '42a0246510704036a9bfcbc31b3f6865' 
+[37mDEBU[0m[2025-02-08T07:29:50Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:29:50Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--42a0246510704036a9bfcbc31b3f6865:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:29:50Z][docker_manager.go:CreateAndStartContainer] Created container with ID '6e432c26035da7e861c5b69be2bf613ca438cffd09ae47da6fe7819e81f30050' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:29:51Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:29:51Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:29:51Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--42a0246510704036a9bfcbc31b3f6865:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:29:51Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'a161ad064315733de39f3c3db8a0af7825264b22375fd90bdeac7c837d650255' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:29:51Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave '42a0246510704036a9bfcbc31b3f6865'... 
+[37mDEBU[0m[2025-02-08T07:29:51Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave '42a0246510704036a9bfcbc31b3f6865' 
+[37mDEBU[0m[2025-02-08T07:29:51Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID 'a161ad064315733de39f3c3db8a0af7825264b22375fd90bdeac7c837d650255' for enclave '42a0246510704036a9bfcbc31b3f6865' 
+[37mDEBU[0m[2025-02-08T07:29:51Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:29:51Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave '42a0246510704036a9bfcbc31b3f6865' 
+[37mDEBU[0m[2025-02-08T07:29:51Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[668e126f5763ca3e05fa1c29579c7e7afa48de60615cba62c8d13b7e5a84829b:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:29:51Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:29:51Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/ 42a0246510704036a9bfcbc31b3f6865:/kurtosis-data] 
+[37mDEBU[0m[2025-02-08T07:29:52Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'f345dcfd4b8da88293282a651e4583a5acf8da7b0e81ab15aefe99c4a9b0ae63' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:29:52Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave '42a0246510704036a9bfcbc31b3f6865'... 
+[37mDEBU[0m[2025-02-08T07:29:52Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave '42a0246510704036a9bfcbc31b3f6865' 
+[37mDEBU[0m[2025-02-08T07:29:52Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave '42a0246510704036a9bfcbc31b3f6865' successfully created 
+[37mDEBU[0m[2025-02-08T07:29:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:57Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:29:59Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[a161ad064315733de39f3c3db8a0af7825264b22375fd90bdeac7c837d650255:true f345dcfd4b8da88293282a651e4583a5acf8da7b0e81ab15aefe99c4a9b0ae63:true] 
+[37mDEBU[0m[2025-02-08T07:30:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[42a0246510704036a9bfcbc31b3f6865:true kurtosis-logs-collector-vol--42a0246510704036a9bfcbc31b3f6865:true] 
+[37mDEBU[0m[2025-02-08T07:30:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[668e126f5763ca3e05fa1c29579c7e7afa48de60615cba62c8d13b7e5a84829b:true] 
+[37mDEBU[0m[2025-02-08T07:30:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[668e126f5763ca3e05fa1c29579c7e7afa48de60615cba62c8d13b7e5a84829b:true] 
+[37mDEBU[0m[2025-02-08T07:31:09Z][engine_connect_server_service.go:CreateEnclave] args: enclave_name:"my-testnet"  api_container_version_tag:""  api_container_log_level:"debug"  mode:TEST  should_apic_run_in_debug_mode:false 
+[37mDEBU[0m[2025-02-08T07:31:09Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Creating Docker network for enclave '76d32ad62826491f8a5600df8800100f'... 
+[37mDEBU[0m[2025-02-08T07:31:09Z][docker_kurtosis_backend_enclave_functions.go:CreateEnclave] Docker network for enclave '76d32ad62826491f8a5600df8800100f' created successfully with ID 'e67440a4a12334454b727c0c24e82caa0666347ebf8635a6fb70521b8460eb08' 
+[37mDEBU[0m[2025-02-08T07:31:09Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[]'                    
+[37mDEBU[0m[2025-02-08T07:31:09Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Creating logs collector for enclave '76d32ad62826491f8a5600df8800100f' 
+[37mDEBU[0m[2025-02-08T07:31:09Z][docker_manager.go:FetchImage] Fetching image 'alpine:3.17' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:31:09Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--76d32ad62826491f8a5600df8800100f:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:31:09Z][docker_manager.go:CreateAndStartContainer] Created container with ID '9fef4bc85957f5709a1361d4048be1228b1d71f5a9e71b18a62d428c12afc0c1' from image 'alpine:3.17' 
+[37mDEBU[0m[2025-02-08T07:31:09Z][fluentbit_configuration_creator.go:createFluentbitConfigFileInVolume] The Fluentbit config file with content '
+[SERVICE]
+	log_level debug
+	http_server On
+	http_listen 0.0.0.0
+	http_port 9712
+	storage.path /fluent-bit/etc/storage/
+[INPUT]
+	name forward
+	listen 0.0.0.0
+	port 9713
+	storage.type  filesystem
+[OUTPUT]
+	name forward
+	match *
+	host 172.17.0.2
+	port 9714
+' was successfully added into the volume 
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_manager.go:FetchImage] Fetching image 'fluent/fluent-bit:1.9.7' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_manager.go:getContainerHostConfig] Binds: [kurtosis-logs-collector-vol--76d32ad62826491f8a5600df8800100f:/fluent-bit/etc] 
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_manager.go:CreateAndStartContainer] Created container with ID 'c9729d029078b23ba8a7092f6037986d5d104a59b0c2d0179b76d166894c2fc2' from image 'fluent/fluent-bit:1.9.7' 
+[37mDEBU[0m[2025-02-08T07:31:10Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Checking for logs collector availability in enclave '76d32ad62826491f8a5600df8800100f'... 
+[37mDEBU[0m[2025-02-08T07:31:10Z][create_logs_collector.go:CreateLogsCollectorForEnclave] ...logs collector is available in enclave '76d32ad62826491f8a5600df8800100f' 
+[37mDEBU[0m[2025-02-08T07:31:10Z][create_logs_collector.go:CreateLogsCollectorForEnclave] Logs collector successfully created with container ID 'c9729d029078b23ba8a7092f6037986d5d104a59b0c2d0179b76d166894c2fc2' for enclave '76d32ad62826491f8a5600df8800100f' 
+[37mDEBU[0m[2025-02-08T07:31:10Z][api_container_launcher.go:LaunchWithCustomVersion] Launching Kurtosis API container...          
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Creating the APIC for enclave '76d32ad62826491f8a5600df8800100f' 
+[37mDEBU[0m[2025-02-08T07:31:10Z][shared_helpers.go:getReverseProxyObjectFromContainerInfo] Enclave networks: 'map[e67440a4a12334454b727c0c24e82caa0666347ebf8635a6fb70521b8460eb08:172.16.0.1]' 
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_manager.go:FetchImage] Fetching image 'kurtosistech/core:1.4.4' with image download mode: missing 
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_manager.go:getContainerHostConfig] Binds: [/var/run/docker.sock:/var/run/docker.sock 76d32ad62826491f8a5600df8800100f:/kurtosis-data kurtosis-github-auth-storage:/kurtosis-data/github-auth/ kurtosis-docker-config-storage:/root/.docker/] 
+[37mDEBU[0m[2025-02-08T07:31:10Z][docker_manager.go:CreateAndStartContainer] Created container with ID '8c1cdabd8318df10d11afcccd89e795ed404baabb0bd65bb6743179343a7315f' from image 'kurtosistech/core:1.4.4' 
+[37mDEBU[0m[2025-02-08T07:31:11Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] Checking for the APIC availability in enclave '76d32ad62826491f8a5600df8800100f'... 
+[37mDEBU[0m[2025-02-08T07:31:11Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] ...APIC is available in enclave '76d32ad62826491f8a5600df8800100f' 
+[37mDEBU[0m[2025-02-08T07:31:11Z][docker_kurtosis_backend_api_container_functions.go:CreateAPIContainer] APIC for enclave '76d32ad62826491f8a5600df8800100f' successfully created 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:08ebc925-6f2e-4fe5-a915-7d53a154f9f1 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:26:51.330227658 +0000 UTC m=+766.346598268 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:7f5bbc3a-fd9f-4a90-a6d4-6cfd8deef5ca AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:26:53.734043103 +0000 UTC m=+768.750413713 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:c453e1f3-1494-4a66-ab4d-9e079ca8addd AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:27:18.865521806 +0000 UTC m=+793.881892288 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:ab56c261-b09b-43bb-9b55-fc265deb3bb0 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:27:21.03410282 +0000 UTC m=+796.050473328 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:54cf7470-6ba6-45a3-b9a7-090eb15b659c AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:28:01.324820657 +0000 UTC m=+836.341191122 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:2e308d65-bc17-4039-b31e-a1bbbdca9794 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:28:03.294192804 +0000 UTC m=+838.310563312 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:47e29233-011d-40ba-8e18-a386918d8482 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:28:09.272041788 +0000 UTC m=+844.288412398 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:e5abc04f-f46a-40fd-b275-aa9a8a0580f3 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:29:50.672461289 +0000 UTC m=+945.688831807 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:0289f0af-a196-4ba7-b3ae-0cf6ba3508aa AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:29:59.717517327 +0000 UTC m=+954.733888002 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:34:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:ea7273a9-08c8-4208-ad03-bafa3985f466 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-create Timestamp:2025-02-08 07:31:09.190301527 +0000 UTC m=+1024.206672135 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false is_subnetworking_enabled:false os:linux] Integrations:map[]}' 
+[37mDEBU[0m[2025-02-08T07:39:55Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[0113a12c7f887262dc7d3e0f7516f9a75a42ea9a682514f21fe28faa79bebecf:true 12f3c6bbcfb7cc1878a091fc6288c6c1ebfa106550c7280ec7e7c8bbdb98d7c7:true 13aa5ec460f0fde8aac0be53f04a30deb7697d39ef10fc6df47cd589bba6c65f:true 14eeef25a34515bf3cad6681c5f5dcee8fa545b9bca131692bd9da48eb573627:true 24c490c2fe46235db153a5941831e20a648a6e5ea32bda3877e5e9b3bf37572e:true 2e46d2bddf4c2d61b09d2a88e1cbf968402ab71266c905a90c8c0e47ffbbac5f:true 2fdc32e433153cb5895a45ffc5c3593572dfd380876bd3da784d43cbeb692d06:true 341511bcd5b098899233d285c8a3714e46fc3b4cba61411581ca91e64774f032:true 386d22c36920f52636b12e190cde61533223c7ea5b7a86c4d4e8c33d67081500:true 3b7b644a3758f11e902cb83cdf68e31c797c38bd44212e6ef196e206a50ff32d:true 40e7a6410b04e3dd3734a5595aef292e27aae0cecaa1ee3fb7e18411a3765d75:true 4385f6e797d78a2cb2b4f1915e285047ae5e9d25174e606a66b17d9d3c7be174:true 4a904dc5e4d99a2a52c159b5b84685f154c7675be86d2570e7fc7b57cebac836:true 4c163d13eb4358a0241af7059ab50360980ec9f1a53777df264e9264fb7f02f7:true 4d167562e01f7b803ad1acde0254645e9f72d8cbc1b911c1270f16ee69850a21:true 5082d7e1c8d66978e251fcd78e32dc8f2a7c1d67389586c26d079420e25c361d:true 56904030e592a941472041687ad7b0389d08639e59b48d232869bef43cba80f8:true 57186cea1cc0eb161a42c3dd1143a2f8113a52e7024880029cfaa47f3d2109eb:true 634b467ccd23c75390ff441f799ecedd4b5bcb501ae1c1a5c8019153b26c2dc2:true 7518033a0a13c6b24de57b92cd95ad6324cddfc13e85b8071c1f7bf6a503f3b6:true 7d3e3399c17b9e3b9841d45fb460d64bf83bef327485ad201d77caddfabe1fec:true 8058bc4b8d0f5dde037d7bee751af75fd7bc7a8de3f526c18bbcb74eaf4e0093:true 80870f6f36c68c3085e883481d7f91c28061395bf8c45621bc22205a41e21aa5:true 8c1cdabd8318df10d11afcccd89e795ed404baabb0bd65bb6743179343a7315f:true 97eae41e70d818f8d5501912bb270393913fd0982703d97ceebb350c6fabad8c:true a254ace49c66f5b60e3a24a14bbe5f3310744d864a05399fea5414085a837926:true a98839fe839e017287307ab2e833aded881964e55e5c823a3b9e7772ca359b38:true ac72f81b4db4e5c986d41218a11d6a9456073a2cd0b5945d23422c86fe62147e:true b2488d69518dde69e5de921bfb676fcf63af6717dd021083c09a1b181b65b1d8:true b4b422cbcb7c980068beead2a88c22f53f364538c148df2f50302a9cb2cfb06c:true bad56f75bcae2195314026571c78e82c7e09c5c69d8adc4dc292411c464aabfa:true bf00cb6fa61f17b549d569c828203b201a73de58942d6e7d8f0f3504e83425b3:true bfcec37c655791b8d4eb9500fd856bf65ae00fc70a690d1578c311c1c5d7e66b:true c0b4b61296012c2786261bfae11d7a982505073fc233f886ce0d9235d2ac361d:true c0fbb58c20afcda1985463f04bab7d85fbecd6715410813c86797c4e60d77fc9:true c1bd9ec356fb071544c27846458edd0bb2b0e963e419fe945cfe98d6b43fc2b9:true c9729d029078b23ba8a7092f6037986d5d104a59b0c2d0179b76d166894c2fc2:true c9a9892b45bce679f9ef03655a88708818e9b284654e990937f5bac1d557cb08:true d4a8af399c7b8690758507af7663e80daa780b0bf22ffe5f7c5dddb4ab05908d:true d9b7acaabbb5917a7462e37488669de4ee0f342166b90ba9d113d11f192f05cf:true e0337963ec0645b284ff2709789f5e355024d91c507bf72efcca3d95fef6fa13:true e0a6c124f0523ce6fcc08366df67bcef14ed4c94c8b79ebc8fbf2954da8a9fee:true e8277e37f4ed766fb1b673650ccf6739c88782f325370c3dadf272800fa931df:true e9a8b7a0ce5e62f6400984333e80e3c21d3580364468b94b0d76687dbfccf8f1:true ed4f17d77fca72c3afa948a27f85ee9db90237780232c1983bf56add16667448:true ed795d72a2f8cca18e4d4de635e322d17def5300edb489e575dbb1d1f8d0966f:true f5008a4104a720b11dde2b5c89bea2421d94c42e36dc2897ce081fd337c3460c:true] 
+[37mDEBU[0m[2025-02-08T07:39:56Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[76d32ad62826491f8a5600df8800100f:true files-artifact-expansion--0ddd24fc8d8c4b98b2c319a426fc3ae5--76d32ad62826491f8a5600df8800100f:true files-artifact-expansion--4f5637e358ea4fb4961972bcece68184--76d32ad62826491f8a5600df8800100f:true files-artifact-expansion--7322cdb34c854e95918368f26c031bb9--76d32ad62826491f8a5600df8800100f:true files-artifact-expansion--ed4ce5ac1032458481efdb95977e3021--76d32ad62826491f8a5600df8800100f:true kurtosis-logs-collector-vol--76d32ad62826491f8a5600df8800100f:true] 
+[37mDEBU[0m[2025-02-08T07:39:56Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[e67440a4a12334454b727c0c24e82caa0666347ebf8635a6fb70521b8460eb08:true] 
+[37mDEBU[0m[2025-02-08T07:39:56Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[e67440a4a12334454b727c0c24e82caa0666347ebf8635a6fb70521b8460eb08:true] 
+[37mDEBU[0m[2025-02-08T07:40:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:40:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:40:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:40:00Z][docker_object_parallelizer.go:RunDockerOperationInParallel] Called RunDockerOperationInParallel on the following Docker object IDs: map[] 
+[37mDEBU[0m[2025-02-08T07:44:05Z][segment_callback.go:Success] Metrics Client success callback executed with message '{Type:track MessageId:f8272606-e49f-4caf-8062-9f1fca6e34b4 AnonymousId: UserId:b81dfc81980f3270dd4d487b1f8fd69451d9aa9a51bcb9dd83ef6959f6fdeb7b Event:enclave-destroy Timestamp:2025-02-08 07:39:55.879542904 +0000 UTC m=+1550.895913412 Context:0xc0001f0000 Properties:map[arch:amd64 backend:docker cloud_instance_id: cloud_user_id: enclave_id:306e7ffdb15f0fb59c84e0e1ba01f1f132445dec5aa02914540e8db6b505763b is_ci:false is_cloud:false os:linux] Integrations:map[]}' 
