@@ -67,7 +67,7 @@ participants:
     builder_network_params: null
     keymanager_enabled: false
 network_params:
-  network: AgroTestnet
+  network: mainnet
   network_id: "3442"
   deposit_contract_address: "0x4242424242424242424242424242424242424242"
   seconds_per_slot: 12
